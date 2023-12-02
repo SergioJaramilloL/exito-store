@@ -1,0 +1,58 @@
+@import '../../styles/base/_breakpoints';
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: 1rem 2rem;
+
+  color: var(--text-grey-color);
+  background: var(--background-grey);
+  border: 1px solid var(--border-grey);
+
+  @include tablet() {
+    flex-direction: row;
+  }
+  
+  &_left {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+
+    @include tablet() {
+      flex-direction: row;
+      align-items: center;
+      width: 60%;
+    }
+
+    p {
+      color: var(--text-grey-color);
+      margin-right: 2rem;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: 0.5rem 0;
+
+      @include tablet() {
+        width: 20rem;
+        margin: 1rem 0;
+      }
+    }
+  }
+  
+  &_right {
+    p > a {
+      font-weight: 600;
+    }
+  }
+}
