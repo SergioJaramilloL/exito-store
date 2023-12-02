@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Poopins', Helvetica, sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Merriweather:wght@300;400;700&family=PT+Serif&family=Poppins:wght@100;300;400;500;600;700&display=swap');
+}
+
+:root {
+  /* fonts */
+  --font-poppins: 'Poopins', Helvetica, sans-serif;
+
+  /* colors */
+  --color-primary: rgb(255, 232, 0);
+  --color-secondary: rgb(247, 133, 35)
+  --background-white: rgb(255, 255, 255);
+  --text-primary-color: rgb(34, 34, 34);
+
+  /* sizes */
+  --max-width: 1100px;
+  --border-radius: 12px;
+
+  /* breakpoints */
+  --mobile-max: 767px;
+  --tablet-min: 768px;
+  --desktop-min: 992px;
+  --desktop-large: 1920px;
+}
