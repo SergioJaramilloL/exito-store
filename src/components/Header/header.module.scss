@@ -1,0 +1,20 @@
+.header {
+  position: static;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--color-primary);
+
+  &_icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 6rem;
+
+    svg:last-child {
+      cursor: pointer;
+    }
+  }
+}
