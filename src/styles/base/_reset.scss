@@ -52,10 +52,6 @@ h1, h2, h3, h4, h5, h6, p {
   letter-spacing: 0.0313rem;
 }
 
-input::-webkit-contacts-auto-fill-button {
-  position: absolute;
-  display: none !important;
-  right: 0;
-  visibility: hidden;
-  pointer-events: none;
+svg {
+  color: var(--text-primary-color);
 }
