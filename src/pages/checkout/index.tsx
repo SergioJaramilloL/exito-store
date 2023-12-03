@@ -1,25 +1,24 @@
-import styles from './checkout.module.scss'
+import styles from './checkout.module.scss';
 
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
-import { FaPlus, FaMinus  } from "react-icons/fa6";
+import { FaPlus, FaMinus, FaTrash  } from 'react-icons/fa6';
+import { useSelector, useDispatch } from 'react-redux';
 
-
-const product = {
-  id: 1,
-  title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-  price: 109.95,
-  description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-  category: "men's clothing",
-  image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-  rating: {
-      rate: 3.9,
-      count: 120
-  }
-}
+import { addProduct, removeProduct } from '@/store/cart/cart.actions';
 
 export default function Checkout(): JSX.Element {
-  const { id, title, price, description, category, image, rating } = product;
+  const dispatch = useDispatch();
+  const { products, total, totalProducts } = useSelector((state: any) => state.cart);
+
+  const handleAddProduct = (productPayload: any) => {
+    dispatch(addProduct(productPayload));
+  }
+
+  const handleRemoveProduct = (productPayload: any) => {
+    dispatch(removeProduct(productPayload));
+  }
 
   return (
     <>
@@ -31,37 +30,48 @@ export default function Checkout(): JSX.Element {
 
       <main className={styles.checkout}>
         <h1>Carrito de compras</h1>
-
         <div className={styles.checkout_layout}>
 
           <section className={styles.checkout_list}>
-            <div className={styles.checkout_product}>
-              <div className={styles.checkout_product_details}>
+            {products.length > 0 && products.map((product: any) => {
+              const { id, title, price, category, image, quantity } = product;
 
-                <div className={styles.checkout_product_image}>
-                  <Image 
-                    src={image}
-                    alt={title}
-                    width={500}
-                    height={500}
-                    layout='responsive'
-                    />
-                </div>
-
-                <div className={styles.checkout_product_info}>
-                  <p>{category.toUpperCase()}</p>
-                  <h2>{title}</h2>
-                  <span>${price}</span>
-                </div>
-
-              </div>
-              
-              <div className={styles.checkout_product_quantity}>
-                <FaMinus />
-                <p>1</p>
-                <FaPlus />
-              </div>
-            </div>
+              return (
+                <React.Fragment key={id}>
+                  <div className={styles.checkout_product}>
+                    <div className={styles.checkout_product_details}>
+      
+                      <div className={styles.checkout_product_image}>
+                        <Image 
+                          src={image}
+                          alt={title}
+                          width={500}
+                          height={500}
+                          layout='responsive'
+                          />
+                      </div>
+      
+                      <div className={styles.checkout_product_info}>
+                        <p>{category.toUpperCase()}</p>
+                        <h2>{title}</h2>
+                        <span>${price}</span>
+                      </div>
+      
+                    </div>
+                    
+                    <div className={styles.checkout_product_quantity}>
+                      {quantity === 1 ? (
+                        <FaTrash onClick={() => handleRemoveProduct(product)}/>
+                      ) : (
+                        <FaMinus onClick={() => handleRemoveProduct(product)}/>
+                      )}
+                      <p>{quantity}</p>
+                      <FaPlus onClick={() => handleAddProduct(product)}/>
+                    </div>
+                  </div>
+                </React.Fragment>
+              )}
+            )}
           </section>
 
           <section className={styles.checkout_ticket}>
@@ -71,9 +81,9 @@ export default function Checkout(): JSX.Element {
               <p>Total:</p>
             </div>
             <div className={styles.checkout_ticket_total}>
-              <p>$ {price}</p>
-              <p>-$ {(price*0.1).toFixed(2)}</p>
-              <p>$ {(price*0.9).toFixed(2)}</p>
+              <p>$ {total.toFixed(2)}</p>
+              <p>-$ {(total*0.1).toFixed(2)}</p>
+              <p>$ {(total*0.9).toFixed(2)}</p>
             </div>
           </section>
 

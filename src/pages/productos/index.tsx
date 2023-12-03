@@ -6,8 +6,6 @@ import Card from '@/components/card'
 import { getAllProducts } from '@/services/products'
 
 export default function Products({ products }: any) {
-console.log("🚀 ~ file: index.tsx:9 ~ Products ~ products:", products)
-
 
   return (
     <>
