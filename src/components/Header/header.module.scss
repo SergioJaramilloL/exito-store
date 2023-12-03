@@ -15,6 +15,56 @@
     align-items: center;
     width: 6rem;
 
+    a {
+      position: relative;
+
+      div {
+        position: absolute;
+        background: #f97b00;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 10px;
+        top: -8px;
+        right: -8px;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          -webkit-animation: header_total_products 1s ease infinite;
+          animation: header_total_products 1s ease infinite;
+          border-radius: 50%;
+          border: 4px double #f97b00
+        }
+
+        @keyframes header_total_products {          
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
+  
+          60% {
+            transform: scale(1.3);
+            opacity: .4;
+          }
+  
+          100% {
+            transform: scale(1.4);
+            opacity: 0;
+          }
+        }
+      }
+    }
+
     svg:last-child {
       cursor: pointer;
     }
