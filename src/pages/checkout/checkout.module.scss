@@ -24,8 +24,17 @@
     width: 100%;
   }
 
+  &_list {
+    p {
+      margin-left: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--text-grey-color);
+    }
+  }
 
   &_toPay {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,8 +48,8 @@
     border: 0;
     border-radius: var(--border-radius);
 
-    svg {
-      color: white;
+    strong {
+      font-weight: 700;
       margin-left: 5px;
     }
   }
