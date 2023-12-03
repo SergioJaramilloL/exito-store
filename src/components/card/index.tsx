@@ -3,10 +3,19 @@ import styles from './card.module.scss'
 import { FaCartShopping  } from "react-icons/fa6";
 import Image from "next/image"
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+
+import { addProduct } from '@/store/cart/cart.actions';
 
 export default function Card({ product }: any): JSX.Element {
   const { push } = useRouter();
+  const dispatch = useDispatch();
+
   const { id, title, price, description, category, image, rating } = product
+
+  const handleAddProduct = (productPayload: any) => {
+    dispatch(addProduct(productPayload));
+  }
 
   return (
     <div className={styles.card}>
@@ -27,7 +36,7 @@ export default function Card({ product }: any): JSX.Element {
             <Image src="/cards-exito.png" alt="logo" width={25} height={25} />
           </div>
         </div>
-        <button onClick={() => push(`/checkout`)}>
+        <button onClick={() => handleAddProduct(product)}>
           Agregar <FaCartShopping size={20}/>
         </button>
       </div>

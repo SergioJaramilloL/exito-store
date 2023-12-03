@@ -4,11 +4,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaCartShopping  } from "react-icons/fa6";
+import { useDispatch } from 'react-redux';
 
 import { getProductsById } from '@/services/products';
+import { addProduct } from '@/store/cart/cart.actions';
 
 export default function ProductDetail({ product }: any): JSX.Element {
+  const dispatch = useDispatch();
   const { id, title, price, description, category, image, rating } = product;
+
+  const handleAddProduct = (productPayload: any) => {
+    dispatch(addProduct(productPayload));
+  }
 
   return (
     <>
@@ -51,11 +58,9 @@ export default function ProductDetail({ product }: any): JSX.Element {
                 <span>{description}</span>
               </div> 
 
-              <Link href={'/checkout'}>
-                <button>
-                  Agregar <FaCartShopping size={20}/>
-                </button> 
-              </Link>
+              <button onClick={() => handleAddProduct(product)}>
+                Agregar <FaCartShopping size={20}/>
+              </button> 
             </section>
           </article>
 
