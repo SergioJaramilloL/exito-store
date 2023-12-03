@@ -5,3 +5,14 @@
 @import './base/_breakpoints';
 @import './base/_normalize';
 @import './base/_reset';
+
+body {  
+  font-family: var(--font-poppins);
+  color: var(--text-primary-color);
+  background: var(--background-white);
+  font-size: 13px;
+  
+  @media (min-width: var(--tablet-min)) {
+    font-size: 16px;
+  }
+}

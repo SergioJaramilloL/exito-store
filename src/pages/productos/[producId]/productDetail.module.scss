@@ -1,0 +1,118 @@
+@import '@/styles/base/_breakpoints';
+
+.detail {
+  padding: 1em;
+
+  @include tablet {
+    padding: 1em 3em;
+  }
+
+  &_breadcrumbs {
+    width: 100%;
+    color: #bebebe;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+
+    @include tablet {
+      margin: 1rem 0;
+
+    }
+
+    strong {
+      color: var(--text-grey-color);
+      font-weight: 500;
+    }
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 1rem 0 0;
+  }
+
+  h2 {
+    font-size: 0.75rem;
+    color: var(--text-grey-color);
+    margin: 0.5rem 0 0;
+  }
+
+  &_product {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    .detail_image {
+      padding: 2rem 5rem;
+    }
+
+    .detail_info {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0;
+      border-top: 1px solid #ebebeb;
+
+      @include tablet {
+        justify-content: center;
+        border: 0;
+      }
+
+      &_price {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-right: 2rem;
+        
+        p {
+          margin: 0.5rem 1rem 0 0;
+          font-size: 1rem;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      &_rating {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        color: var(--text-grey-color);
+
+        span {
+          font-weight: 600;
+          color: var(--text-primary-color)
+        }
+      }
+      
+      &_description {
+        font-size: 1rem;
+        margin: 0.5rem 0 1rem;
+        color: var(--text-grey-color);
+
+        span {
+          margin-top: 0.5rem;
+          color: var(--text-primary-color)
+        }
+      }
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 0.875rem;
+        font-weight: 100;
+    
+        padding: 0.9rem 0;
+        background: var(--color-secondary);
+        color: white;
+        border: 0;
+        border-radius: var(--border-radius);
+    
+        svg {
+          color: white;
+          margin-left: 5px;
+        }
+      }
+    }
+  } 
+}
