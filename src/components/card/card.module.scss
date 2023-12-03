@@ -1,0 +1,48 @@
+.card {
+
+  &_image {
+    padding: 2rem;
+  }
+
+  &_info {
+    
+    h2 {
+      font-size: 0.75rem;
+    }
+
+    &_price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 2rem;
+      
+      p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+    }
+
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 0.875rem;
+    font-weight: 100;
+
+    padding: 0.9rem 0;
+    background: var(--color-secondary);
+    color: white;
+    border: 0;
+    border-radius: var(--border-radius);
+
+    svg {
+      color: white;
+      margin-left: 5px;
+    }
+  }
+}

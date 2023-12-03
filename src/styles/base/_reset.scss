@@ -48,8 +48,9 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6, p {
+  font-weight: 100;
   margin: 0;
-  letter-spacing: 0.0313rem;
+  letter-spacing: 0;
 }
 
 svg {
