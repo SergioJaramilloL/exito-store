@@ -3,7 +3,8 @@ import styles  from './products.module.scss'
 import Head from 'next/head'
 
 import Card from '@/components/card'
-import { getAllProducts } from '@/services/products'
+import { getApolloClient } from '@/utils/apolloClient'
+import { GET_PRODUCTS } from '@/services/products'
 
 export default function Products({ products }: any) {
 
@@ -26,11 +27,13 @@ export default function Products({ products }: any) {
 }
 
 export const getServerSideProps = async () => {
-  const response = await getAllProducts()
+  const apolloClient = getApolloClient()
+
+  const { data } = await apolloClient.query({ query: GET_PRODUCTS })
 
   return {
     props: {
-      products: response.data
+      products: data.products
     }
   }
 }

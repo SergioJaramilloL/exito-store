@@ -1,15 +1,28 @@
-import axios from 'axios';
+import { gql } from "@apollo/client";
 
-const BASE_URL = 'https://fakestoreapi.com/products';
+export const GET_PRODUCTS = gql`
+  query GetProducts {
+    products {
+      id
+      image
+      title
+      price
+    }
+  }
+`;
 
-export const getAllProducts = () => {
-  const url = `${BASE_URL}`;
-
-  return axios.get(url)
-}
-
-export const getProductsById = (productId: number) => {
-  const url = `${BASE_URL}/${productId}`;
-
-  return axios.get(url);
-}
+export const GET_PRODUCT_BY_ID = gql`
+	query GetProductById($id: String!) {
+		product(id: $id) {
+      id
+      image
+      title
+      price
+      description
+      category
+      rating {
+        rate
+      }
+		}
+	}
+`;

@@ -11,7 +11,7 @@ export default function Card({ product }: any): JSX.Element {
   const { push } = useRouter();
   const dispatch = useDispatch();
 
-  const { id, title, price, description, category, image, rating } = product
+  const { id, title, price,  image } = product
 
   const handleAddProduct = (productPayload: any) => {
     dispatch(addProduct(productPayload));
