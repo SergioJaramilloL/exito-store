@@ -2,11 +2,11 @@ import styles from './productDetail.module.scss';
 
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import { FaCartShopping  } from "react-icons/fa6";
 import { useDispatch } from 'react-redux';
+import { getApolloClient } from '@/utils/apolloClient'
+import { GET_PRODUCT_BY_ID } from '@/services/products'
 
-import { getProductsById } from '@/services/products';
 import { addProduct } from '@/store/cart/cart.actions';
 
 export default function ProductDetail({ product }: any): JSX.Element {
@@ -71,11 +71,16 @@ export default function ProductDetail({ product }: any): JSX.Element {
 }
 
 export const getServerSideProps = async ({ params }: any) => {
-  const response = await getProductsById(params.productId)
+  const apolloClient = getApolloClient()
+
+  const { data } = await apolloClient.query({ 
+    query: GET_PRODUCT_BY_ID, 
+    variables: { id: params.productId } 
+  })
   
   return {
     props: {
-      product: response.data
+      product: data.product
     }
   }
 }
