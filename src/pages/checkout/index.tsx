@@ -3,12 +3,14 @@ import styles from './checkout.module.scss';
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { FaPlus, FaMinus, FaTrash  } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { addProduct, removeProduct } from '@/store/cart/cart.actions';
 
 export default function Checkout(): JSX.Element {
+  const { push } = useRouter();
   const dispatch = useDispatch();
   const { products, total, totalProducts } = useSelector((state: any) => state.cart);
 
@@ -33,6 +35,7 @@ export default function Checkout(): JSX.Element {
         <div className={styles.checkout_layout}>
 
           <section className={styles.checkout_list}>
+            <p>{totalProducts} productos</p>
             {products.length > 0 && products.map((product: any) => {
               const { id, title, price, category, image, quantity } = product;
 
@@ -89,8 +92,8 @@ export default function Checkout(): JSX.Element {
 
         </div>
 
-        <button className={styles.checkout_toPay}>
-          Ir a pagar
+        <button className={styles.checkout_toPay} onClick={() => push(`/pay`)}>
+          Ir a pagar /<strong>Total: $ {(total*0.9).toFixed(2)}</strong>
         </button> 
       </main>
     </>
