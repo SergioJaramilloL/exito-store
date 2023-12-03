@@ -1,0 +1,56 @@
+@import '@/styles/base/_breakpoints';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+
+  @include tablet {
+    padding: 1em 3em;
+  }
+
+  &_breadcrumbs {
+    width: 100%;
+    color: #bebebe;
+    font-size: 1rem;
+    margin: 1rem 0;
+
+    strong {
+      color: var(--text-grey-color);
+      font-weight: 500;
+    }
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    @include tablet {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &_gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 3rem;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 4rem;
+    }
+
+    div {
+      justify-self: center;
+    }
+  }
+}
