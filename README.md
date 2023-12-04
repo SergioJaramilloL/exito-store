@@ -17,7 +17,7 @@ Al usar la aplicación, verá una página de inicio donde se muestran todos los 
 - [Git](https://git-scm.com/downloads)
 - [Node.js and npm](https://nodejs.org) Node >= 18.15 LTS, npm >= 9.5.x
 
-## Developing
+## Instalación
 
 1. Clone el repositorio
 
