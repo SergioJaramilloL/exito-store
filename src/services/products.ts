@@ -7,6 +7,7 @@ export const GET_PRODUCTS = gql`
       image
       title
       price
+      category
     }
   }
 `;
