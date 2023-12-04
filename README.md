@@ -1,40 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Éxito store
 
-## Getting Started
+## Descripción:
 
-First, run the development server:
+Esta es una aplicación web que permite a los usuarios poder elegir entre un stock de productos comunmente vendidos en las tiendas Éxito. El usuario puede agregar los productos que desee al carrito de compras y luego realizar la compra de los mismos, puede explorar la aplicación el siguiente enlace: [Éxito store](https://exito-store.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Nota:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Esta aplicación y la API consumida están alojadas en un servidor gratuito. Esto significa que si no se usa durante un período de tiempo, el servidor se apagará. Esto puede causar un retraso en la primera solicitud de API. Por favor sea paciente.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Cómo funciona:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Al usar la aplicación, verá una página de inicio donde se muestran todos los productos ofrecidos, en cada producto tiene dos opciones ( Agregar al carrito ó ver el detalle del producto ). Al dar click en el botón de agregar al carrito, se agregará el producto al carrito de compras, el cual se puede visualizar en la parte superior derecha de la página. Al dar click en el botón de ver detalle, se mostrará una página con la información del producto, en esta página se puede agregar el producto al carrito de compras. En la página del carrito de compras se puede visualizar los productos agregados, se puede eliminar un producto del carrito y se puede realizar la compra de los productos agregados.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Prerequisitos
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [Git](https://git-scm.com/downloads)
+- [Node.js and npm](https://nodejs.org) Node >= 18.15 LTS, npm >= 9.5.x
 
-## Learn More
+## Developing
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone el repositorio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Ejecute `npm install` para instalar las dependencias del servidor.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Configure el entorno ejecutando `cp .env.example .env.local`
 
-## Deploy on Vercel
+4. Actualice `.env.local` con la información requerida, solo hay una variable de entorno requerida:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   - `BASE_URL=http://localhost:3000` - Esta es la URL del servidor de apollo que se consumirá.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. Ejecute `npm run dev` para iniciar el servidor de desarrollo.
