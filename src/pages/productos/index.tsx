@@ -1,12 +1,37 @@
-import styles  from './products.module.scss'
+import styles  from './products.module.scss';
 
-import Head from 'next/head'
+import Head from 'next/head';
+import { useState, useEffect } from 'react';
 
-import Card from '@/components/card'
-import { getApolloClient } from '@/utils/apolloClient'
-import { GET_PRODUCTS } from '@/services/products'
+import Card from '@/components/card';
+import { getApolloClient } from '@/utils/apolloClient';
+import { GET_PRODUCTS } from '@/services/products';
+
+import SearchBar from '@/components/SearchBar';
+
+function searchOnProducts(arrProducts: any, search: string) {
+  const searchLower = search.toLowerCase();
+
+  return arrProducts.filter((product: any) => {
+    const titleMatch = product.title.toLowerCase().includes(searchLower);
+    const categoryMatch = product.category.toLowerCase().includes(searchLower);
+
+    return titleMatch || categoryMatch;
+  })
+}
 
 export default function Products({ products }: any) {
+  const [ productsToRender, setProductsToRender ] = useState(products)
+  const [ search, setSearch ] = useState('')
+
+  useEffect(() => {
+    if(search === '') {
+      setProductsToRender(products)
+    } else {
+      const productsFiltered = searchOnProducts(products, search)
+      setProductsToRender(productsFiltered)
+    }
+  }, [search])
 
   return (
     <>
@@ -17,10 +42,18 @@ export default function Products({ products }: any) {
       </Head>
       <main className={styles.home}>
         <p className={styles.home_breadcrumbs}>inicio / <strong>productos</strong></p>
+        <SearchBar
+          onSearch={setSearch}
+          search={search}
+        />
         <h1>Productos éxito</h1>
-        <div className={styles.home_gallery}>
-          {products.map((item: any) => ( <Card key={item.id} product={item}/>))}
-        </div>
+        {productsToRender.length > 0 ? (
+          <div className={styles.home_gallery}>
+            {productsToRender.map((item: any) => ( <Card key={item.id} product={item}/>))}
+          </div>
+        ): (
+          <p>No hay productos con esas especificaciones</p>
+        )}
       </main>
     </>
   )

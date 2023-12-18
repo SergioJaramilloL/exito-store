@@ -2,7 +2,6 @@ import styles from './footer.module.scss';
 
 import Image from 'next/image';
 
-
 const visitAlso = [
   {id:1, img: 'carulla', width: 50, height: 30},
   {id:2, img: 'viva', width: 30, height: 30},

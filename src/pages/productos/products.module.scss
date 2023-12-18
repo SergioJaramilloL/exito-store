@@ -8,7 +8,7 @@
 
   @include tablet {
     max-width: var(--max-width);
-    margin: 2rem auto;
+    margin: 0 auto;
   }
 
   &_breadcrumbs {

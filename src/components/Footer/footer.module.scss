@@ -1,6 +1,8 @@
 @import '../../styles/base/_breakpoints';
 
 .footer {
+  position: sticky;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

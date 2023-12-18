@@ -1,0 +1,53 @@
+@import '@/styles/base/_breakpoints';
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: 100%;
+  margin: 1rem 0 2rem;
+
+  border: 1px solid var(--border-grey);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px var(--shadow-color);
+
+  @include tablet {
+    width: 50%;
+  }
+
+  input {
+    height: 100%;
+    width: 100%;
+    padding: 0 1rem;
+    border: none;
+
+    color: var(--text-light-grey-color);
+    font-size: 1rem;
+    font-weight: 500;
+
+    border-radius: var(--border-radius);
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--text-light-grey-color);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  button {
+    height: 100%;
+    width: 2.5rem;
+    font-size: 10px;
+    background: var(--background-dark-grey);
+    border: none;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+
+    svg {
+      color: var(--background-white);
+    }
+  }
+}

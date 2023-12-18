@@ -14,15 +14,16 @@
   /* text */
   --text-primary-color: rgb(34, 34, 34);
   --text-grey-color: rgb(77, 87, 102);
+  --text-light-grey-color: rgb(153, 153, 153);
 
   /* background */
   --background-white: rgb(255, 255, 255);
   --background-grey: rgb(247, 247, 247);
+  --background-dark-grey: rgb(103, 103, 103);
 
   /* border */
   --border-radius: 12px;
   --border-grey: rgb(237, 237, 237);
-
 
   /* sizes */
   --max-width: 1100px;
@@ -33,4 +34,7 @@
   --tablet-min: 768px;
   --desktop-min: 992px;
   --desktop-large: 1920px;
+
+  /* Shadow */
+  --shadow-color: rgba(0,0,0,.16)
 }
