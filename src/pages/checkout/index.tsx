@@ -3,6 +3,7 @@ import styles from './checkout.module.scss';
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FaPlus, FaMinus, FaTrash  } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
@@ -35,45 +36,53 @@ export default function Checkout(): JSX.Element {
         <div className={styles.checkout_layout}>
 
           <section className={styles.checkout_list}>
-            <p>{totalProducts} productos</p>
-            {products.length > 0 && products.map((product: any) => {
-              const { id, title, price, category, image, quantity } = product;
+            {products.length > 0 ? (
+              <>
+                <p>{totalProducts} productos</p>
+                {products.map((product: any) => {
+                const { id, title, price, category, image, quantity } = product;
 
-              return (
-                <React.Fragment key={id}>
-                  <div className={styles.checkout_product}>
-                    <div className={styles.checkout_product_details}>
-      
-                      <div className={styles.checkout_product_image}>
-                        <Image 
-                          src={image}
-                          alt={title}
-                          width={500}
-                          height={500}
-                          layout='responsive'
-                          />
+                return (
+                  <React.Fragment key={id}>
+                    <div className={styles.checkout_product}>
+                      <div className={styles.checkout_product_details}>
+        
+                        <div className={styles.checkout_product_image}>
+                          <Image 
+                            src={image}
+                            alt={title}
+                            width={500}
+                            height={500}
+                            layout='responsive'
+                            />
+                        </div>
+        
+                        <div className={styles.checkout_product_info}>
+                          <p>{category.toUpperCase()}</p>
+                          <h2>{title}</h2>
+                          <span>${price}</span>
+                        </div>
+        
                       </div>
-      
-                      <div className={styles.checkout_product_info}>
-                        <p>{category.toUpperCase()}</p>
-                        <h2>{title}</h2>
-                        <span>${price}</span>
+                      
+                      <div className={styles.checkout_product_quantity}>
+                        {quantity === 1 ? (
+                          <FaTrash onClick={() => handleRemoveProduct(product)}/>
+                        ) : (
+                          <FaMinus onClick={() => handleRemoveProduct(product)}/>
+                        )}
+                        <p>{quantity}</p>
+                        <FaPlus onClick={() => handleAddProduct(product)}/>
                       </div>
-      
                     </div>
-                    
-                    <div className={styles.checkout_product_quantity}>
-                      {quantity === 1 ? (
-                        <FaTrash onClick={() => handleRemoveProduct(product)}/>
-                      ) : (
-                        <FaMinus onClick={() => handleRemoveProduct(product)}/>
-                      )}
-                      <p>{quantity}</p>
-                      <FaPlus onClick={() => handleAddProduct(product)}/>
-                    </div>
-                  </div>
-                </React.Fragment>
-              )}
+                  </React.Fragment>
+              )})}
+              </>
+            ) : (
+              <div className={styles.checkout_list_message}>
+                <p>No tiene productos seleccionados<br/></p>
+                <Link href='/productos'>Ir a productos</Link>
+              </div>
             )}
           </section>
 

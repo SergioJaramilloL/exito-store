@@ -5,7 +5,8 @@
 
   @include tablet {
     max-width: var(--max-width);
-    margin: 2rem auto;
+    height: calc(100vh - 166.5px - 1rem);
+    overflow: auto;
   }
 
   &_breadcrumbs {
