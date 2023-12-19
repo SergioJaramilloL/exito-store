@@ -2,6 +2,7 @@ import styles from './productDetail.module.scss';
 
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaCartShopping  } from "react-icons/fa6";
 import { useDispatch } from 'react-redux';
 import { getApolloClient } from '@/utils/apolloClient'
@@ -26,7 +27,7 @@ export default function ProductDetail({ product }: any): JSX.Element {
       </Head>
       <main className={styles.detail}>
         <p className={styles.detail_breadcrumbs}>
-          inicio / productos / <strong>{product.title}</strong>
+        <Link href='/'>Inicio</Link> / <Link href='/productos'>Productos</Link> / <strong>{product.title}</strong>
         </p>
         <div className={styles.detail_content}>
           <h1>{title}</h1>

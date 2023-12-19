@@ -1,6 +1,7 @@
 import styles  from './products.module.scss';
 
 import Head from 'next/head';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 import Card from '@/components/card';
@@ -41,7 +42,7 @@ export default function Products({ products }: any) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={styles.home}>
-        <p className={styles.home_breadcrumbs}>inicio / <strong>productos</strong></p>
+        <p className={styles.home_breadcrumbs}><Link href='/'>Inicio</Link> / <Link href='/productos'><strong>Productos</strong></Link></p>
         <SearchBar
           onSearch={setSearch}
           search={search}
